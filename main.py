@@ -13,8 +13,10 @@ root.geometry('1200x600')
 canv = tk.Canvas(root, bg='white')
 canv.pack(fill=tk.BOTH, expand=1)
 g = 3  # �������� �� ����������
-kv = 0.7  # ����������� ��������� �������� ����, ���������� ��� "�������������" ����������
-start_r = 45  # start_r � sub_r ������ ��� ��������� ���������� ���� �� ��������. ���������� � target.hit
+kv = 0.7  # ����������� ��������� �������� ����, ���������� ���
+# "�������������" ����������
+start_r = 45  # start_r � sub_r ������ ��� ��������� ���������� ����
+# �� ��������. ���������� � target.hit
 # 45
 sub_r = 0
 colors = ['blue', 'green', 'red', 'yellow']
@@ -87,12 +89,14 @@ class Ball():
             self.live -= 1
 
     def hittest(self, obj):
-        """������� ��������� ����������������� �� ������ ������ � �����, ����������� � ������� obj.
+        """������� ��������� ����������������� �� ������
+        ������ � �����, ����������� � ������� obj.
 
         Args:
             obj: ������, � ������� ����������� ������������.
         Returns:
-            ���������� True � ������ ������������ ���� � ����. � ��������� ������ ���������� False.
+            ���������� True � ������ ������������ ���� � ����.
+            � ��������� ������ ���������� False.
 
         ����������� � ������� ������������ � ������������
         (self.x, self.y)
@@ -119,8 +123,8 @@ class Ball():
         cosc = (self.x - self.vx - obj.x) * (-self.vx) + \
                (self.y - self.vy - obj.y) * (-self.vy)
         return ((h < r) and (cosb >= 0) and (cosc >= 0)) \
-               or (b < r) \
-               or (c < r)
+            or (b < r) \
+            or (c < r)
 
 
 class Gun():
@@ -141,11 +145,13 @@ class Gun():
         """������� �����.
 
         ���������� ��� ���������� ������ ����.
-        ��������� �������� ��������� �������� ���� vx � vy ������� �� ��������� ����.
+        ��������� �������� ��������� �������� ���� vx � vy
+        ������� �� ��������� ����.
         balls - ������ ���� �����
         bullet_1 - ���� ����� �� ������ ����(���������� ����� ���������)
         bullet_2 - ���� ����� �� ������ ����(���������� ����� ���������)
-        kv - ����������� ��������� �������� ����, ���������� ��� "�������������" ����������
+        kv - ����������� ��������� �������� ����, ���������� ���
+        "�������������" ����������
         """
         global balls, bullet_1, bullet_2, kv
         bullet_1 += 1
@@ -196,7 +202,8 @@ class Target():
         vx - ��������� �������� ���� �� �����������
         vy - ��������� �������� ���� �� ���������
         time - �������� ��� ��������� ����
-        is_hitted - ��������, ������ � ���� ��� ���(����� ��� ��������� target.self_coords())
+        is_hitted - ��������, ������ � ���� ��� ���(�����
+        ��� ��������� target.self_coords())
         """
         self.live = 1
         self.id = canv.create_oval(0, 0, 0, 0)
@@ -301,14 +308,17 @@ def new_game(event=''):
                     canv.itemconfig(screen1, text='����-1 ������� �����. \
 ����������!')
                 elif ((bullet_1 % 10) == 1) and (bullet_1 != 11):
-                    canv.itemconfig(screen1, text='�� ���������� ����-1 �� ' \
+                    canv.itemconfig(screen1, text='�� ���������� ����-1 �� '
+                        \
                                                   + str(bullet_1) + ' �������')
                 elif ((bullet_1 % 10) <= 4) and ((bullet_1 % 10) >= 2) and \
                         ((bullet_1 <= 12) or (bullet_1 >= 14)):
-                    canv.itemconfig(screen1, text='�� ���������� ����-1 �� ' \
+                    canv.itemconfig(screen1, text='�� ���������� ����-1 �� '
+                        \
                                                   + str(bullet_1) + ' �������a')
                 else:
-                    canv.itemconfig(screen1, text='�� ���������� ����-1 �� ' \
+                    canv.itemconfig(screen1, text='�� ���������� ����-1 �� '
+                        \
                                                   + str(bullet_1) + ' ���������')
                 canv.update()
                 bullet_1 = 0
@@ -320,14 +330,17 @@ def new_game(event=''):
                     canv.itemconfig(screen2, text='����-2 ������� �����. \
 ����������!')
                 elif ((bullet_2 % 10) == 1) and (bullet_2 != 11):
-                    canv.itemconfig(screen2, text='�� ���������� ����-2 �� ' \
+                    canv.itemconfig(screen2, text='�� ���������� ����-2 �� '
+                        \
                                                   + str(bullet_2) + ' �������')
                 elif ((bullet_2 % 10) <= 4) and ((bullet_2 % 10) >= 2) and \
                         ((bullet_2 < 12) or (bullet_2 > 14)):
-                    canv.itemconfig(screen2, text='�� ���������� ����-2 �� ' \
+                    canv.itemconfig(screen2, text='�� ���������� ����-2 �� '
+                        \
                                                   + str(bullet_2) + ' �������a')
                 else:
-                    canv.itemconfig(screen2, text='�� ���������� ����-2 �� ' \
+                    canv.itemconfig(screen2, text='�� ���������� ����-2 �� '
+                        \
                                                   + str(bullet_2) + ' ���������')
                 canv.update()
                 bullet_2 = 0
